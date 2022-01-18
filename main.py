@@ -71,3 +71,15 @@ model.fit(train_data, train_labels, epochs=400)
 #testing the model against the train data
 loss_value, accuracy_value = model.evaluate(test_data, test_labels)
 print(f'Our test accuracy was {accuracy_value}')
+
+#Predicting the data
+#Predict function
+def predictor(test_data, test_labels, index):
+    prediction = model.predict(test_data)
+    if np.argmax(prediction[index]) == test_labels[index]:
+        print(f'This was correctly predicted to be a \"{test_labels[index]}\"!')
+    else:
+        print(f'This was incorrectly predicted to be a \"{np.argmax(prediction[index])}\". It was actually a \"{test_labels[index]}\".')
+        return(prediction)
+
+predictor(test_data, test_labels, 149)
